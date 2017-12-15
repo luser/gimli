@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RegisterRule` enum in crate `gimli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RegisterRule">
+
+    <title>gimli::RegisterRule - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum RegisterRule</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>gimli</a></p><script>window.sidebarCurrent = {name: 'RegisterRule', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>gimli</a>::<wbr><a class="enum" href=''>RegisterRule</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/gimli/cfi.rs.html#2550-2582' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum RegisterRule&lt;R:&nbsp;<a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; {
+    Undefined,
+    SameValue,
+    Offset(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>),
+    ValOffset(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>),
+    Register(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>),
+    Expression(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;),
+    ValExpression(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;),
+    Architectural,
+}</pre><div class='docblock'><p>An entry in the abstract CFI table that describes how to find the value of a
+register.</p>
+
+<p>&quot;The register columns contain rules that describe whether a given register
+has been saved and the rule to find the value for the register in the
+previous frame.&quot;</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.Undefined" class="variant small-section-header"><a href="#variant.Undefined" class="anchor field"></a><span id='Undefined.v' class='invisible'><code>Undefined</code></span></span><div class='docblock'><blockquote>
+<p>A register that has this rule has no recoverable value in the previous
+frame. (By convention, it is not preserved by a callee.)</p>
+</blockquote>
+</div><span id="variant.SameValue" class="variant small-section-header"><a href="#variant.SameValue" class="anchor field"></a><span id='SameValue.v' class='invisible'><code>SameValue</code></span></span><div class='docblock'><blockquote>
+<p>This register has not been modified from the previous frame. (By
+convention, it is preserved by the callee, but the callee has not
+modified it.)</p>
+</blockquote>
+</div><span id="variant.Offset" class="variant small-section-header"><a href="#variant.Offset" class="anchor field"></a><span id='Offset.v' class='invisible'><code>Offset(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></span><div class='docblock'><p>&quot;The previous value of this register is saved at the address CFA+N where
+CFA is the current CFA value and N is a signed offset.&quot;</p>
+</div><span id="variant.ValOffset" class="variant small-section-header"><a href="#variant.ValOffset" class="anchor field"></a><span id='ValOffset.v' class='invisible'><code>ValOffset(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></span><div class='docblock'><p>&quot;The previous value of this register is the value CFA+N where CFA is the
+current CFA value and N is a signed offset.&quot;</p>
+</div><span id="variant.Register" class="variant small-section-header"><a href="#variant.Register" class="anchor field"></a><span id='Register.v' class='invisible'><code>Register(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)</code></span></span><div class='docblock'><p>&quot;The previous value of this register is stored in another register
+numbered R.&quot;</p>
+</div><span id="variant.Expression" class="variant small-section-header"><a href="#variant.Expression" class="anchor field"></a><span id='Expression.v' class='invisible'><code>Expression(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;)</code></span></span><div class='docblock'><p>&quot;The previous value of this register is located at the address produced
+by executing the DWARF expression.&quot;</p>
+</div><span id="variant.ValExpression" class="variant small-section-header"><a href="#variant.ValExpression" class="anchor field"></a><span id='ValExpression.v' class='invisible'><code>ValExpression(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;)</code></span></span><div class='docblock'><p>&quot;The previous value of this register is the value produced by executing
+the DWARF expression.&quot;</p>
+</div><span id="variant.Architectural" class="variant small-section-header"><a href="#variant.Architectural" class="anchor field"></a><span id='Architectural.v' class='invisible'><code>Architectural</code></span></span><div class='docblock'><p>&quot;The rule is defined externally to this specification by the augmenter.&quot;</p>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;</code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;</code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="enum" href="../gimli/enum.RegisterRule.html" title="enum gimli::RegisterRule">RegisterRule</a>&lt;R&gt;</code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2549' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gimli";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

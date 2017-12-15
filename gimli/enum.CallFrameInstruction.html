@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CallFrameInstruction` enum in crate `gimli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CallFrameInstruction">
+
+    <title>gimli::CallFrameInstruction - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum CallFrameInstruction</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>gimli</a></p><script>window.sidebarCurrent = {name: 'CallFrameInstruction', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>gimli</a>::<wbr><a class="enum" href=''>CallFrameInstruction</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/gimli/cfi.rs.html#2595-2866' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum CallFrameInstruction&lt;R:&nbsp;<a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; {
+    SetLoc {
+        address: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    },
+    AdvanceLoc {
+        delta: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    },
+    DefCfa {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    },
+    DefCfaSf {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    },
+    DefCfaRegister {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    },
+    DefCfaOffset {
+        offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    },
+    DefCfaOffsetSf {
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    },
+    DefCfaExpression {
+        expression: <a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;,
+    },
+    Undefined {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    },
+    SameValue {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    },
+    Offset {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    },
+    OffsetExtendedSf {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    },
+    ValOffset {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+    },
+    ValOffsetSf {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        factored_offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    },
+    Register {
+        dest_register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        src_register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    },
+    Expression {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        expression: <a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;,
+    },
+    ValExpression {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        expression: <a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;,
+    },
+    Restore {
+        register: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    },
+    RememberState,
+    RestoreState,
+    Nop,
+}</pre><div class='docblock'><p>A parsed call frame instruction.</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.SetLoc" class="variant small-section-header"><a href="#variant.SetLoc" class="anchor field"></a><span id='SetLoc.v' class='invisible'><code>SetLoc</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_set_loc</li>
+</ol>
+
+<p>The DW_CFA_set_loc instruction takes a single operand that represents
+a target address. The required action is to create a new table row
+using the specified address as the location. All other values in the
+new row are initially identical to the current row. The new location
+value is always greater than the current one. If the segment_size
+field of this FDE&#39;s CIE is non- zero, the initial location is preceded
+by a segment selector of the given length.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.SetLoc.fields'><h3 class='fields'>Fields of <code>SetLoc</code></h3>
+
+                           <table><tr><td id='variant.SetLoc.field.address'><span id='SetLoc.v.address.v' class='invisible'><code>address:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The target address.</p>
+</div></td></tr></table></span><span id="variant.AdvanceLoc" class="variant small-section-header"><a href="#variant.AdvanceLoc" class="anchor field"></a><span id='AdvanceLoc.v' class='invisible'><code>AdvanceLoc</code></span></span><div class='docblock'><p>The <code>AdvanceLoc</code> instruction is used for all of <code>DW_CFA_advance_loc</code> and
+<code>DW_CFA_advance_loc{1,2,4}</code>.</p>
+
+<blockquote>
+<ol>
+<li>DW_CFA_advance_loc</li>
+</ol>
+
+<p>The DW_CFA_advance instruction takes a single operand (encoded with
+the opcode) that represents a constant delta. The required action is
+to create a new table row with a location value that is computed by
+taking the current entry’s location value and adding the value of
+delta * code_alignment_factor. All other values in the new row are
+initially identical to the current row.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.AdvanceLoc.fields'><h3 class='fields'>Fields of <code>AdvanceLoc</code></h3>
+
+                           <table><tr><td id='variant.AdvanceLoc.field.delta'><span id='AdvanceLoc.v.delta.v' class='invisible'><code>delta:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></td><td><div class='docblock'><p>The delta to be added to the current address.</p>
+</div></td></tr></table></span><span id="variant.DefCfa" class="variant small-section-header"><a href="#variant.DefCfa" class="anchor field"></a><span id='DefCfa.v' class='invisible'><code>DefCfa</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa</li>
+</ol>
+
+<p>The DW_CFA_def_cfa instruction takes two unsigned LEB128 operands
+representing a register number and a (non-factored) offset. The
+required action is to define the current CFA rule to use the provided
+register and offset.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfa.fields'><h3 class='fields'>Fields of <code>DefCfa</code></h3>
+
+                           <table><tr><td id='variant.DefCfa.field.register'><span id='DefCfa.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.DefCfa.field.offset'><span id='DefCfa.v.offset.v' class='invisible'><code>offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The non-factored offset.</p>
+</div></td></tr></table></span><span id="variant.DefCfaSf" class="variant small-section-header"><a href="#variant.DefCfaSf" class="anchor field"></a><span id='DefCfaSf.v' class='invisible'><code>DefCfaSf</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa_sf</li>
+</ol>
+
+<p>The DW_CFA_def_cfa_sf instruction takes two operands: an unsigned
+LEB128 value representing a register number and a signed LEB128
+factored offset. This instruction is identical to DW_CFA_def_cfa
+except that the second operand is signed and factored. The resulting
+offset is factored_offset * data_alignment_factor.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfaSf.fields'><h3 class='fields'>Fields of <code>DefCfaSf</code></h3>
+
+                           <table><tr><td id='variant.DefCfaSf.field.register'><span id='DefCfaSf.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.DefCfaSf.field.factored_offset'><span id='DefCfaSf.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.DefCfaRegister" class="variant small-section-header"><a href="#variant.DefCfaRegister" class="anchor field"></a><span id='DefCfaRegister.v' class='invisible'><code>DefCfaRegister</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa_register</li>
+</ol>
+
+<p>The DW_CFA_def_cfa_register instruction takes a single unsigned LEB128
+operand representing a register number. The required action is to
+define the current CFA rule to use the provided register (but to keep
+the old offset). This operation is valid only if the current CFA rule
+is defined to use a register and offset.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfaRegister.fields'><h3 class='fields'>Fields of <code>DefCfaRegister</code></h3>
+
+                           <table><tr><td id='variant.DefCfaRegister.field.register'><span id='DefCfaRegister.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr></table></span><span id="variant.DefCfaOffset" class="variant small-section-header"><a href="#variant.DefCfaOffset" class="anchor field"></a><span id='DefCfaOffset.v' class='invisible'><code>DefCfaOffset</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa_offset</li>
+</ol>
+
+<p>The DW_CFA_def_cfa_offset instruction takes a single unsigned LEB128
+operand representing a (non-factored) offset. The required action is
+to define the current CFA rule to use the provided offset (but to keep
+the old register). This operation is valid only if the current CFA
+rule is defined to use a register and offset.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfaOffset.fields'><h3 class='fields'>Fields of <code>DefCfaOffset</code></h3>
+
+                           <table><tr><td id='variant.DefCfaOffset.field.offset'><span id='DefCfaOffset.v.offset.v' class='invisible'><code>offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The non-factored offset.</p>
+</div></td></tr></table></span><span id="variant.DefCfaOffsetSf" class="variant small-section-header"><a href="#variant.DefCfaOffsetSf" class="anchor field"></a><span id='DefCfaOffsetSf.v' class='invisible'><code>DefCfaOffsetSf</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa_offset_sf</li>
+</ol>
+
+<p>The DW_CFA_def_cfa_offset_sf instruction takes a signed LEB128 operand
+representing a factored offset. This instruction is identical to
+DW_CFA_def_cfa_offset except that the operand is signed and
+factored. The resulting offset is factored_offset *
+data_alignment_factor. This operation is valid only if the current CFA
+rule is defined to use a register and offset.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfaOffsetSf.fields'><h3 class='fields'>Fields of <code>DefCfaOffsetSf</code></h3>
+
+                           <table><tr><td id='variant.DefCfaOffsetSf.field.factored_offset'><span id='DefCfaOffsetSf.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.DefCfaExpression" class="variant small-section-header"><a href="#variant.DefCfaExpression" class="anchor field"></a><span id='DefCfaExpression.v' class='invisible'><code>DefCfaExpression</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_def_cfa_expression</li>
+</ol>
+
+<p>The DW_CFA_def_cfa_expression instruction takes a single operand
+encoded as a DW_FORM_exprloc value representing a DWARF
+expression. The required action is to establish that expression as the
+means by which the current CFA is computed.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.DefCfaExpression.fields'><h3 class='fields'>Fields of <code>DefCfaExpression</code></h3>
+
+                           <table><tr><td id='variant.DefCfaExpression.field.expression'><span id='DefCfaExpression.v.expression.v' class='invisible'><code>expression:&nbsp;<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;</code></span></td><td><div class='docblock'><p>The DWARF expression.</p>
+</div></td></tr></table></span><span id="variant.Undefined" class="variant small-section-header"><a href="#variant.Undefined" class="anchor field"></a><span id='Undefined.v' class='invisible'><code>Undefined</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_undefined</li>
+</ol>
+
+<p>The DW_CFA_undefined instruction takes a single unsigned LEB128
+operand that represents a register number. The required action is to
+set the rule for the specified register to “undefined.”</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.Undefined.fields'><h3 class='fields'>Fields of <code>Undefined</code></h3>
+
+                           <table><tr><td id='variant.Undefined.field.register'><span id='Undefined.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr></table></span><span id="variant.SameValue" class="variant small-section-header"><a href="#variant.SameValue" class="anchor field"></a><span id='SameValue.v' class='invisible'><code>SameValue</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_same_value</li>
+</ol>
+
+<p>The DW_CFA_same_value instruction takes a single unsigned LEB128
+operand that represents a register number. The required action is to
+set the rule for the specified register to “same value.”</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.SameValue.fields'><h3 class='fields'>Fields of <code>SameValue</code></h3>
+
+                           <table><tr><td id='variant.SameValue.field.register'><span id='SameValue.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr></table></span><span id="variant.Offset" class="variant small-section-header"><a href="#variant.Offset" class="anchor field"></a><span id='Offset.v' class='invisible'><code>Offset</code></span></span><div class='docblock'><p>The <code>Offset</code> instruction represents both <code>DW_CFA_offset</code> and
+<code>DW_CFA_offset_extended</code>.</p>
+
+<blockquote>
+<ol>
+<li>DW_CFA_offset</li>
+</ol>
+
+<p>The DW_CFA_offset instruction takes two operands: a register number
+(encoded with the opcode) and an unsigned LEB128 constant representing
+a factored offset. The required action is to change the rule for the
+register indicated by the register number to be an offset(N) rule
+where the value of N is factored offset * data_alignment_factor.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.Offset.fields'><h3 class='fields'>Fields of <code>Offset</code></h3>
+
+                           <table><tr><td id='variant.Offset.field.register'><span id='Offset.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.Offset.field.factored_offset'><span id='Offset.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.OffsetExtendedSf" class="variant small-section-header"><a href="#variant.OffsetExtendedSf" class="anchor field"></a><span id='OffsetExtendedSf.v' class='invisible'><code>OffsetExtendedSf</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_offset_extended_sf</li>
+</ol>
+
+<p>The DW_CFA_offset_extended_sf instruction takes two operands: an
+unsigned LEB128 value representing a register number and a signed
+LEB128 factored offset. This instruction is identical to
+DW_CFA_offset_extended except that the second operand is signed and
+factored. The resulting offset is factored_offset *
+data_alignment_factor.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.OffsetExtendedSf.fields'><h3 class='fields'>Fields of <code>OffsetExtendedSf</code></h3>
+
+                           <table><tr><td id='variant.OffsetExtendedSf.field.register'><span id='OffsetExtendedSf.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.OffsetExtendedSf.field.factored_offset'><span id='OffsetExtendedSf.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.ValOffset" class="variant small-section-header"><a href="#variant.ValOffset" class="anchor field"></a><span id='ValOffset.v' class='invisible'><code>ValOffset</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_val_offset</li>
+</ol>
+
+<p>The DW_CFA_val_offset instruction takes two unsigned LEB128 operands
+representing a register number and a factored offset. The required
+action is to change the rule for the register indicated by the
+register number to be a val_offset(N) rule where the value of N is
+factored_offset * data_alignment_factor.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.ValOffset.fields'><h3 class='fields'>Fields of <code>ValOffset</code></h3>
+
+                           <table><tr><td id='variant.ValOffset.field.register'><span id='ValOffset.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.ValOffset.field.factored_offset'><span id='ValOffset.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.ValOffsetSf" class="variant small-section-header"><a href="#variant.ValOffsetSf" class="anchor field"></a><span id='ValOffsetSf.v' class='invisible'><code>ValOffsetSf</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_val_offset_sf</li>
+</ol>
+
+<p>The DW_CFA_val_offset_sf instruction takes two operands: an unsigned
+LEB128 value representing a register number and a signed LEB128
+factored offset. This instruction is identical to DW_CFA_val_offset
+except that the second operand is signed and factored. The resulting
+offset is factored_offset * data_alignment_factor.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.ValOffsetSf.fields'><h3 class='fields'>Fields of <code>ValOffsetSf</code></h3>
+
+                           <table><tr><td id='variant.ValOffsetSf.field.register'><span id='ValOffsetSf.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.ValOffsetSf.field.factored_offset'><span id='ValOffsetSf.v.factored_offset.v' class='invisible'><code>factored_offset:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span></td><td><div class='docblock'><p>The factored offset.</p>
+</div></td></tr></table></span><span id="variant.Register" class="variant small-section-header"><a href="#variant.Register" class="anchor field"></a><span id='Register.v' class='invisible'><code>Register</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_register</li>
+</ol>
+
+<p>The DW_CFA_register instruction takes two unsigned LEB128 operands
+representing register numbers. The required action is to set the rule
+for the first register to be register(R) where R is the second
+register.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.Register.fields'><h3 class='fields'>Fields of <code>Register</code></h3>
+
+                           <table><tr><td id='variant.Register.field.dest_register'><span id='Register.v.dest_register.v' class='invisible'><code>dest_register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The number of the register whose rule is being changed.</p>
+</div></td></tr><tr><td id='variant.Register.field.src_register'><span id='Register.v.src_register.v' class='invisible'><code>src_register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The number of the register where the other register&#39;s value can be
+found.</p>
+</div></td></tr></table></span><span id="variant.Expression" class="variant small-section-header"><a href="#variant.Expression" class="anchor field"></a><span id='Expression.v' class='invisible'><code>Expression</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_expression</li>
+</ol>
+
+<p>The DW_CFA_expression instruction takes two operands: an unsigned
+LEB128 value representing a register number, and a DW_FORM_block value
+representing a DWARF expression. The required action is to change the
+rule for the register indicated by the register number to be an
+expression(E) rule where E is the DWARF expression. That is, the DWARF
+expression computes the address. The value of the CFA is pushed on the
+DWARF evaluation stack prior to execution of the DWARF expression.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.Expression.fields'><h3 class='fields'>Fields of <code>Expression</code></h3>
+
+                           <table><tr><td id='variant.Expression.field.register'><span id='Expression.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.Expression.field.expression'><span id='Expression.v.expression.v' class='invisible'><code>expression:&nbsp;<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;</code></span></td><td><div class='docblock'><p>The DWARF expression.</p>
+</div></td></tr></table></span><span id="variant.ValExpression" class="variant small-section-header"><a href="#variant.ValExpression" class="anchor field"></a><span id='ValExpression.v' class='invisible'><code>ValExpression</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_val_expression</li>
+</ol>
+
+<p>The DW_CFA_val_expression instruction takes two operands: an unsigned
+LEB128 value representing a register number, and a DW_FORM_block value
+representing a DWARF expression. The required action is to change the
+rule for the register indicated by the register number to be a
+val_expression(E) rule where E is the DWARF expression. That is, the
+DWARF expression computes the value of the given register. The value
+of the CFA is pushed on the DWARF evaluation stack prior to execution
+of the DWARF expression.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.ValExpression.fields'><h3 class='fields'>Fields of <code>ValExpression</code></h3>
+
+                           <table><tr><td id='variant.ValExpression.field.register'><span id='ValExpression.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The target register&#39;s number.</p>
+</div></td></tr><tr><td id='variant.ValExpression.field.expression'><span id='ValExpression.v.expression.v' class='invisible'><code>expression:&nbsp;<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;</code></span></td><td><div class='docblock'><p>The DWARF expression.</p>
+</div></td></tr></table></span><span id="variant.Restore" class="variant small-section-header"><a href="#variant.Restore" class="anchor field"></a><span id='Restore.v' class='invisible'><code>Restore</code></span></span><div class='docblock'><p>The <code>Restore</code> instruction represents both <code>DW_CFA_restore</code> and
+<code>DW_CFA_restore_extended</code>.</p>
+
+<blockquote>
+<ol>
+<li>DW_CFA_restore</li>
+</ol>
+
+<p>The DW_CFA_restore instruction takes a single operand (encoded with
+the opcode) that represents a register number. The required action is
+to change the rule for the indicated register to the rule assigned it
+by the initial_instructions in the CIE.</p>
+</blockquote>
+</div><span class='docblock autohide sub-variant' id='variant.Restore.fields'><h3 class='fields'>Fields of <code>Restore</code></h3>
+
+                           <table><tr><td id='variant.Restore.field.register'><span id='Restore.v.register.v' class='invisible'><code>register:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The register to be reset.</p>
+</div></td></tr></table></span><span id="variant.RememberState" class="variant small-section-header"><a href="#variant.RememberState" class="anchor field"></a><span id='RememberState.v' class='invisible'><code>RememberState</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_remember_state</li>
+</ol>
+
+<p>The DW_CFA_remember_state instruction takes no operands. The required
+action is to push the set of rules for every register onto an implicit
+stack.</p>
+</blockquote>
+</div><span id="variant.RestoreState" class="variant small-section-header"><a href="#variant.RestoreState" class="anchor field"></a><span id='RestoreState.v' class='invisible'><code>RestoreState</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_restore_state</li>
+</ol>
+
+<p>The DW_CFA_restore_state instruction takes no operands. The required
+action is to pop the set of rules off the implicit stack and place
+them in the current row.</p>
+</blockquote>
+</div><span id="variant.Nop" class="variant small-section-header"><a href="#variant.Nop" class="anchor field"></a><span id='Nop.v' class='invisible'><code>Nop</code></span></span><div class='docblock'><blockquote>
+<ol>
+<li>DW_CFA_nop</li>
+</ol>
+
+<p>The DW_CFA_nop instruction has no operands and no required actions. It
+is used as padding to make a CIE or FDE an appropriate size.</p>
+</blockquote>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;</code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;</code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="enum" href="../gimli/enum.CallFrameInstruction.html" title="enum gimli::CallFrameInstruction">CallFrameInstruction</a>&lt;R&gt;</code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#2594' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gimli";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

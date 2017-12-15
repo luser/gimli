@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `EvaluationResult` enum in crate `gimli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, EvaluationResult">
+
+    <title>gimli::EvaluationResult - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum EvaluationResult</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>gimli</a></p><script>window.sidebarCurrent = {name: 'EvaluationResult', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>gimli</a>::<wbr><a class="enum" href=''>EvaluationResult</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/gimli/op.rs.html#847-900' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum EvaluationResult&lt;R:&nbsp;<a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; {
+    Complete,
+    RequiresMemory {
+        address: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+        size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+        space: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;,
+    },
+    RequiresRegister(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>),
+    RequiresFrameBase,
+    RequiresTls(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>),
+    RequiresCallFrameCfa,
+    RequiresAtLocation(<a class="enum" href="../gimli/enum.DieReference.html" title="enum gimli::DieReference">DieReference</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;),
+    RequiresEntryValue(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;),
+    RequiresParameterRef(<a class="struct" href="../gimli/struct.UnitOffset.html" title="struct gimli::UnitOffset">UnitOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;),
+    RequiresTextBase,
+}</pre><div class='docblock'><p>The state of an <code>Evaluation</code> after evaluating a DWARF expression.
+The evaluation is either <code>Complete</code>, or it requires more data
+to continue, as described by the variant.</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.Complete" class="variant small-section-header"><a href="#variant.Complete" class="anchor field"></a><span id='Complete.v' class='invisible'><code>Complete</code></span></span><div class='docblock'><p>The <code>Evaluation</code> is complete, and <code>Evaluation::result()</code> can be called.</p>
+</div><span id="variant.RequiresMemory" class="variant small-section-header"><a href="#variant.RequiresMemory" class="anchor field"></a><span id='RequiresMemory.v' class='invisible'><code>RequiresMemory</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs a value from memory to proceed further.  Once the
+caller determines what value to provide it should resume the <code>Evaluation</code>
+by calling <code>Evaluation::resume_with_memory</code>.</p>
+</div><span class='docblock autohide sub-variant' id='variant.RequiresMemory.fields'><h3 class='fields'>Fields of <code>RequiresMemory</code></h3>
+
+                           <table><tr><td id='variant.RequiresMemory.field.address'><span id='RequiresMemory.v.address.v' class='invisible'><code>address:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span></td><td><div class='docblock'><p>The address of the value required.</p>
+</div></td></tr><tr><td id='variant.RequiresMemory.field.size'><span id='RequiresMemory.v.size.v' class='invisible'><code>size:&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span></td><td><div class='docblock'><p>The size of the value required. This is guaranteed to be at most the
+word size of the target architecture.</p>
+</div></td></tr><tr><td id='variant.RequiresMemory.field.space'><span id='RequiresMemory.v.space.v' class='invisible'><code>space:&nbsp;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;</code></span></td><td><div class='docblock'><p>If not <code>None</code>, a target-specific address space value.</p>
+</div></td></tr></table></span><span id="variant.RequiresRegister" class="variant small-section-header"><a href="#variant.RequiresRegister" class="anchor field"></a><span id='RequiresRegister.v' class='invisible'><code>RequiresRegister(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs a value from a register to proceed further.  Once
+the caller determines what value to provide it should resume the
+<code>Evaluation</code> by calling <code>Evaluation::resume_with_register</code>.</p>
+</div><span id="variant.RequiresFrameBase" class="variant small-section-header"><a href="#variant.RequiresFrameBase" class="anchor field"></a><span id='RequiresFrameBase.v' class='invisible'><code>RequiresFrameBase</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the frame base address to proceed further.  Once
+the caller determines what value to provide it should resume the
+<code>Evaluation</code> by calling <code>Evaluation::resume_with_frame_base</code>.  The frame
+base address is the address produced by the location description in the
+<code>DW_AT_frame_base</code> attribute of the current function.</p>
+</div><span id="variant.RequiresTls" class="variant small-section-header"><a href="#variant.RequiresTls" class="anchor field"></a><span id='RequiresTls.v' class='invisible'><code>RequiresTls(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs a value from TLS to proceed further.  Once the
+caller determines what value to provide it should resume the
+<code>Evaluation</code> by calling <code>Evaluation::resume_with_tls</code>.</p>
+</div><span id="variant.RequiresCallFrameCfa" class="variant small-section-header"><a href="#variant.RequiresCallFrameCfa" class="anchor field"></a><span id='RequiresCallFrameCfa.v' class='invisible'><code>RequiresCallFrameCfa</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the CFA to proceed further.  Once the caller
+determines what value to provide it should resume the <code>Evaluation</code> by
+calling <code>Evaluation::resume_with_call_frame_cfa</code>.</p>
+</div><span id="variant.RequiresAtLocation" class="variant small-section-header"><a href="#variant.RequiresAtLocation" class="anchor field"></a><span id='RequiresAtLocation.v' class='invisible'><code>RequiresAtLocation(<a class="enum" href="../gimli/enum.DieReference.html" title="enum gimli::DieReference">DieReference</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;)</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the DWARF expression at the given location to
+proceed further.  Once the caller determines what value to provide it
+should resume the <code>Evaluation</code> by calling
+<code>Evaluation::resume_with_at_location</code>.</p>
+</div><span id="variant.RequiresEntryValue" class="variant small-section-header"><a href="#variant.RequiresEntryValue" class="anchor field"></a><span id='RequiresEntryValue.v' class='invisible'><code>RequiresEntryValue(<a class="struct" href="../gimli/struct.Expression.html" title="struct gimli::Expression">Expression</a>&lt;R&gt;)</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the value produced by evaluating a DWARF
+expression at the entry point of the current subprogram.  Once the
+caller determines what value to provide it should resume the
+<code>Evaluation</code> by calling <code>Evaluation::resume_with_entry_value</code>.</p>
+</div><span id="variant.RequiresParameterRef" class="variant small-section-header"><a href="#variant.RequiresParameterRef" class="anchor field"></a><span id='RequiresParameterRef.v' class='invisible'><code>RequiresParameterRef(<a class="struct" href="../gimli/struct.UnitOffset.html" title="struct gimli::UnitOffset">UnitOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;)</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the value of the parameter at the given location
+in the current function&#39;s caller.  Once the caller determines what value
+to provide it should resume the <code>Evaluation</code> by calling
+<code>Evaluation::resume_with_parameter_ref</code>.</p>
+</div><span id="variant.RequiresTextBase" class="variant small-section-header"><a href="#variant.RequiresTextBase" class="anchor field"></a><span id='RequiresTextBase.v' class='invisible'><code>RequiresTextBase</code></span></span><div class='docblock'><p>The <code>Evaluation</code> needs the base address of the .text section of the
+binary to proceed.  Once the caller determines what value to provide it
+should resume the <code>Evaluation</code> by calling
+<code>Evaluation::resume_with_text_base</code>.</p>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../gimli/enum.EvaluationResult.html" title="enum gimli::EvaluationResult">EvaluationResult</a>&lt;R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>,&nbsp;</span></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/op.rs.html#846' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/op.rs.html#846' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> + <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../gimli/enum.EvaluationResult.html" title="enum gimli::EvaluationResult">EvaluationResult</a>&lt;R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>,&nbsp;</span></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/op.rs.html#846' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.EvaluationResult.html" title="enum gimli::EvaluationResult">EvaluationResult</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/op.rs.html#846' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../gimli/enum.EvaluationResult.html" title="enum gimli::EvaluationResult">EvaluationResult</a>&lt;R&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/op.rs.html#846' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gimli";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

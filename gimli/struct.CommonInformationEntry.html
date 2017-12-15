@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CommonInformationEntry` struct in crate `gimli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CommonInformationEntry">
+
+    <title>gimli::CommonInformationEntry - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct CommonInformationEntry</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>gimli</a></p><script>window.sidebarCurrent = {name: 'CommonInformationEntry', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>gimli</a>::<wbr><a class="struct" href=''>CommonInformationEntry</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/gimli/cfi.rs.html#1040-1100' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CommonInformationEntry&lt;Section, R, Offset&nbsp;=&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span> { /* fields omitted */ }</pre><div class='docblock'><blockquote>
+<p>A Common Information Entry holds information that is shared among many
+Frame Description Entries. There is at least one CIE in every non-empty
+<code>.debug_frame</code> section.</p>
+</blockquote>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;Section, R, Offset&gt; <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1202-1264' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'>
+<h1 id='signal-safe-methods' class='section-header'><a href='#signal-safe-methods'>Signal Safe Methods</a></h1>
+<p>These methods are guaranteed not to allocate, acquire locks, or perform any
+other signal-unsafe operations.</p>
+</div><div class='impl-items'><h4 id='method.offset' class="method"><span id='offset.v' class='invisible'><code>pub fn <a href='#method.offset' class='fnname'>offset</a>(&amp;self) -&gt; Offset</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1210-1212' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get the offset of this entry from the start of its containing section.</p>
+</div><h4 id='method.instructions' class="method"><span id='instructions.v' class='invisible'><code>pub fn <a href='#method.instructions' class='fnname'>instructions</a>(&amp;self) -&gt; <a class="struct" href="../gimli/struct.CallFrameInstructionIter.html" title="struct gimli::CallFrameInstructionIter">CallFrameInstructionIter</a>&lt;R&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1218-1222' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Iterate over this CIE&#39;s initial instructions.</p>
+
+<p>Can be <a href="./index.html#using-with-fallibleiterator">used with
+<code>FallibleIterator</code></a>.</p>
+</div><h4 id='method.entry_len' class="method"><span id='entry_len.v' class='invisible'><code>pub fn <a href='#method.entry_len' class='fnname'>entry_len</a>(&amp;self) -&gt; Offset</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1228-1230' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><blockquote>
+<p>A constant that gives the number of bytes of the CIE structure, not
+including the length field itself (see Section 7.2.2). The size of the
+length field plus the value of length must be an integral multiple of
+the address size.</p>
+</blockquote>
+</div><h4 id='method.version' class="method"><span id='version.v' class='invisible'><code>pub fn <a href='#method.version' class='fnname'>version</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1234-1236' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><blockquote>
+<p>A version number (see Section 7.23). This number is specific to the
+call frame information and is independent of the DWARF version number.</p>
+</blockquote>
+</div><h4 id='method.augmentation' class="method"><span id='augmentation.v' class='invisible'><code>pub fn <a href='#method.augmentation' class='fnname'>augmentation</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../gimli/struct.Augmentation.html" title="struct gimli::Augmentation">Augmentation</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1242-1244' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Get the augmentation data, if any exists.</p>
+
+<p>The only augmentation understood by <code>gimli</code> is that which is defined by
+<code>.eh_frame</code>.</p>
+</div><h4 id='method.code_alignment_factor' class="method"><span id='code_alignment_factor.v' class='invisible'><code>pub fn <a href='#method.code_alignment_factor' class='fnname'>code_alignment_factor</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1248-1250' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><blockquote>
+<p>A constant that is factored out of all advance location instructions
+(see Section 6.4.2.1).</p>
+</blockquote>
+</div><h4 id='method.data_alignment_factor' class="method"><span id='data_alignment_factor.v' class='invisible'><code>pub fn <a href='#method.data_alignment_factor' class='fnname'>data_alignment_factor</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1254-1256' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><blockquote>
+<p>A constant that is factored out of certain offset instructions (see
+below). The resulting value is (operand * data_alignment_factor).</p>
+</blockquote>
+</div><h4 id='method.return_address_register' class="method"><span id='return_address_register.v' class='invisible'><code>pub fn <a href='#method.return_address_register' class='fnname'>return_address_register</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1261-1263' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><blockquote>
+<p>An unsigned ... constant that indicates which column in the rule
+table represents the return address of the function. Note that this
+column might not correspond to an actual machine register.</p>
+</blockquote>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl&lt;Section:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, Offset:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;Section:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>, R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>, Offset:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;Section:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>, R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>, Offset:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl&lt;Section:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a>, R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a>, Offset:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="struct" href="../gimli/struct.CommonInformationEntry.html" title="struct gimli::CommonInformationEntry">CommonInformationEntry</a>&lt;Section, R, Offset&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../gimli/trait.Reader.html" title="trait gimli::Reader">Reader</a>&lt;Offset = Offset&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset: <a class="trait" href="../gimli/trait.ReaderOffset.html" title="trait gimli::ReaderOffset">ReaderOffset</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section: <a class="trait" href="../gimli/trait.UnwindSection.html" title="trait gimli::UnwindSection">UnwindSection</a>&lt;R&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;Section::<a class="type" href="../gimli/trait.UnwindSection.html#associatedtype.Offset" title="type gimli::UnwindSection::Offset">Offset</a>: <a class="trait" href="../gimli/trait.UnwindOffset.html" title="trait gimli::UnwindOffset">UnwindOffset</a>&lt;R::<a class="type" href="../gimli/trait.Reader.html#associatedtype.Offset" title="type gimli::Reader::Offset">Offset</a>&gt;,&nbsp;</span></code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/gimli/cfi.rs.html#1039' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "gimli";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
